@@ -1,0 +1,20 @@
+{
+	"name": "command_line",
+	"version": "1.0.0",
+	"description": "- cd\r - dir\r - mkdir",
+	"main": "index.ts",
+	"scripts": {
+		"start": "node dist/server.js",
+		"build": "tsc"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bin": {
+		"execute": "index.js"
+	},
+	"devDependencies": {
+		"@types/node": "^22.10.0",
+		"typescript": "^5.7.2"
+	}
+}

@@ -1,6 +1,11 @@
-const { cd, dir } = require('./navigation')
+const { originPath } = require('./config')
+const { cd, dir } = require('./folders')
 
 const commands = {
 	cd,
-	dir,
+	dir: dir,
+	ls: dir,
+	originPath,
 }
+
+module.exports = commands
