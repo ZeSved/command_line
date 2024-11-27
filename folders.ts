@@ -1,9 +1,8 @@
-const fileSystem = require('fs')
-const string = require('./util')
+import fileSystem from 'fs'
 
-const navigation = {
-	cd: (options) => {
-		const pathSegments = currentDirectory.split('\\')
+export const folders = {
+	cd: (options: string[]) => {
+		const pathSegments = globalThis.currentDirectory.split('\\')
 		const newPathSegments = options[1].split('\\')
 
 		for (const directory in newPathSegments) {
@@ -22,12 +21,12 @@ const navigation = {
 		}
 	},
 
-	dir: (options) => {
+	dir: (options: string[]) => {
 		const flags = options.filter((part) => part.startsWith('-'))
 
-		if (currentDirectory === 'C:') globalThis.currentDirectory += '\\'
+		if (globalThis.currentDirectory === 'C:') globalThis.currentDirectory += '\\'
 
-		fileSystem.readdir(currentDirectory, { withFileTypes: true }, (err, paths) => {
+		fileSystem.readdir(globalThis.currentDirectory, { withFileTypes: true }, (err: Error | null, paths: fileSystem.Dirent[]) => {
 			paths.forEach((segment) => {
 				if (options[1] === undefined) {
 					console.log(segment.name)
@@ -63,9 +62,9 @@ const navigation = {
 		// }
 	},
 
-	mkdir: (name) => {
-		if (!fileSystem.existsSync(`${currentDirectory}${name[1]}`)) {
-			fileSystem.mkdirSync(`${currentDirectory}${name[1]}`, () => {
+	mkdir: (name: string[]) => {
+		if (!fileSystem.existsSync(`${globalThis.currentDirectory}${name[1]}`)) {
+			fileSystem.mkdir(`${globalThis.currentDirectory}${name[1]}`, () => {
 				console.log('Path successfully created.')
 			})
 		} else {
@@ -74,4 +73,4 @@ const navigation = {
 	},
 }
 
-module.exports = navigation
+// module.exports = folders
