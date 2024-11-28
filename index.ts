@@ -26,6 +26,7 @@ function sys() {
 			return
 		} else {
 			commands[cmd[0] as keyof typeof commands]([...cmd])
+
 			setTimeout(() => {
 				sys()
 			}, 5)

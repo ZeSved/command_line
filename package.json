@@ -11,10 +11,17 @@
 	"author": "",
 	"license": "ISC",
 	"bin": {
-		"execute": "index.js"
+		"execute": "index.ts"
 	},
 	"devDependencies": {
 		"@types/node": "^22.10.0",
 		"typescript": "^5.7.2"
+	},
+	"pkg": {
+		"scripts": "*.js",
+		"targets": [
+			"node14-win-x64"
+		],
+		"outputPath": "."
 	}
 }

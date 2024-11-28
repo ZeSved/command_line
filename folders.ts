@@ -58,8 +58,6 @@ export const folders = {
 		})
 
 		globalThis.currentDirectory.replaceAll('\\\\', '\\')
-		// if (currentDirectory === 'C:\\') {
-		// }
 	},
 
 	mkdir: (name: string[]) => {
@@ -71,6 +69,14 @@ export const folders = {
 			console.log('Path/folder already exists.')
 		}
 	},
-}
 
-// module.exports = folders
+	rmdir: (name: string[]) => {
+		if (fileSystem.existsSync(`${globalThis.currentDirectory}${name[1]}`)) {
+			fileSystem.unlink(`${globalThis.currentDirectory}${name[1]}`, () => {
+				console.log('Directory successfully removed')
+			})
+		} else {
+			console.log('Directory not found')
+		}
+	}
+}
